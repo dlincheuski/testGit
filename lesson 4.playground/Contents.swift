@@ -31,6 +31,79 @@ if summCode < 200 {
 }
 
 
+/*
+let number1 = "12345"
+let number2 = "12hh345"
+let number3 = "12543"
+let number4 = "23451"
+let number5 = "54321"
+
+var mumber1 = Int(number1)
+var mumber2 = Int(number2)
+var mumber3 = Int(number3)
+var mumber4 = Int(number4)
+var mumber5 = Int(number5)
+
+var numberSumm = 0
+
+if  mumber1 != nil {
+    numberSumm += (mumber1)!
+}
+
+if var unwrap2 = Int(number2) {
+    numberSumm += unwrap2
+}
+
+if let unwrap3 = Int(number3) {
+    numberSumm += unwrap3
+}
+if  mumber4 != nil {
+    numberSumm += (mumber4)!
+}
+
+if let unwrap5 = Int(number5) {
+    numberSumm += unwrap5
+}
+print(numberSumm)
+
+
+
+//let a = "200b"
+//var b = Int(a)
+/*
+ if a == b {
+ print("good")
+ } else {
+ print("bed")
+ }
+ */
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
