@@ -6,42 +6,28 @@ let number3 = "12543"
 let number4 = "23451"
 let number5 = "54321"
 
-var mumber1 = Int(number1)
-var mumber2 = Int(number2)
-var mumber3 = Int(number3)
-var mumber4 = Int(number4)
-var mumber5 = Int(number5)
-/*
-Int(number1) != nil ?? Int(number1)!
-Int(number2) != nil ?? Int(number2)!
-Int(number3) != nil ?? Int(number3)!
-Int(number4) != nil ?? Int(number4)!
-Int(number5) != nil ?? Int(number5)!
-*/
+var mumber1 = Int(number1) ?? 0
+var mumber2 = Int(number2) ?? 0
+var mumber3 = Int(number3) ?? 0
+var mumber4 = Int(number4) ?? 0
+var mumber5 = Int(number5) ?? 0
 
+var summ = mumber1 + mumber2 + mumber3 + mumber4 + mumber5
+print("Summ = \(mumber1) + \(mumber2) + \(mumber2) + \(mumber4) + \(mumber5) = \(summ)")
 
+print("Summ = " + "\(mumber1)" + " + " + "\(mumber2)" + " + " + "\(mumber2)" + " + " + "\(mumber4)" + " + " + "\(mumber5)" + " = " + "\(summ)")
 
-print("Summ = \(number1) + \(number2) + \(number3) + \(number4) + \(number5)")
+//создать строку типа алфавит и найти в строке индекс указанного Charecter
 
-print("Summ = " + "\(number1)" + " + " + "\(number2)" + " + " + "\(number3)" + " + " + "\(number4)" + " + " + "\(number5)")
+let stringExample = "abcdefghijklmnopqrstuvwxyz"
+let char: Character = "b"
+var counter = 0
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+for index in stringExample {
+    if index == char {
+        break
+    } else {
+        counter += 1
+    }
+}
+print("index char in stringExample - \(counter)")
