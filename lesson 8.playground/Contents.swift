@@ -1,5 +1,4 @@
-//создать дикшенери вида [студент : оценка], двум студентам изменить оценку, добавить 2 новых студента
-//посчитать сумму балов оставшихся студентов и их средний балл
+//создать дикшенери вида [студент : оценка], двум студентам изменить оценку, добавить 2 новых студента, убрать 2 студента
 var dicthStudents = ["Bob Luis" : "5", "Stefany Road" : "9", "Stiv Wolf" : "7", "Megan Fox" : "8", "Lili Jordan" : "4"]
 
 dicthStudents["Bob Luis"] = "9"
@@ -13,15 +12,17 @@ print(dicthStudents)
 dicthStudents.removeValue(forKey:"Stiv Wolf")
 dicthStudents["Megan Fox"] = nil
 print(dicthStudents)
-
+//посчитать сумму балов оставшихся студентов и их средний балл
 var summ = 0
+var count = 0
 var average = 0.0
 for key in dicthStudents.keys {
-    if var keys = Int(dicthStudents[key]!) {
+    if let keys = Int(dicthStudents[key]!) {
         summ += keys
+        count += 1
     }
 }
-average = Double(summ) / 5.0
+average = Double(summ) / Double(count)
 print(summ, average)
 
 //создать дикшенери вида [месяц : число дней в месяце], использовать тюпл при выводе, использоыввть клюя-значение при выводе
@@ -39,12 +40,12 @@ for key in dictMonthDay.keys {
 let vertikal = ["a", "b", "c", "d", "e", "f", "g", "h"]
 let gorizontal = ["1", "2", "3", "4", "5", "6", "7", "8"]
 var board: [String:Bool] = [:]
-for i in gorizontal {
-    for j in vertikal {
-        if Int(i)! % 2 == 0 {
-            board["\(j)" + "\(i)"] = true
+for valueGorizontal in gorizontal {
+    for valueVertikal in vertikal {
+        if Int(valueGorizontal)! % 2 == 0 {
+            board["\(valueVertikal)" + "\(valueGorizontal)"] = true
         } else {
-            board["\(j)" + "\(i)"] = false
+            board["\(valueVertikal)" + "\(valueGorizontal)"] = false
         }
     }
 }

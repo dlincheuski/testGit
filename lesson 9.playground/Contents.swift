@@ -48,10 +48,7 @@ default:
 //Если его фамилия начинаетсяч с Е или З вывести его фамилию
 //В остальных случаях выводить его ФИО
 var fio = ("Auzhenko", "Ariu", "Vnatolievich")
-//var firstFamaly = String(fio.0[fio.0.startIndex])
-//var firstName = String(fio.1[fio.0.startIndex])
-//var firstOtchestvo = String(fio.2[fio.0.startIndex])
-//print(firstFamaly, firstName, firstOtchestvo)
+
 switch fio {
 case (fio.0, let number, fio.2) where number[number.startIndex] == "A" || number[number.startIndex]  == "O":
     print(fio.1)
@@ -66,22 +63,18 @@ default:
 let vertikal = ["a", "b", "c", "d", "e", "f", "g", "h", "j", "k"]
 let gorizontal = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
 var board: [String:String] = [:]
-for i in gorizontal {
-    for j in vertikal {
+for indexGorizontal in gorizontal {
+    for indexVertikal in vertikal {
         switch board {
-        case let popadanie where (Int(i)! % 3 == 0):
-            board["\(j)" + "\(i)"] = "popadanie"
-        case let ubit where (Int(i)! % 5 == 0):
-            board["\(j)" + "\(i)"] = "ubit"
+        case let popadanie where (Int(indexGorizontal)! % 3 == 0):
+            board["\(indexVertikal)" + "\(indexGorizontal)"] = "popadanie"
+        case let ubit where (Int(indexGorizontal)! % 5 == 0):
+            board["\(indexVertikal)" + "\(indexGorizontal)"] = "ubit"
         default:
-            board["\(j)" + "\(i)"] = "mimo"
-        }
- //       if Int(i)! % 2 == 0 {
- //           board["\(j)" + "\(i)"] = true
- //      } else {
- //           board["\(j)" + "\(i)"] = false
+            board["\(indexVertikal)" + "\(indexGorizontal)"] = "mimo"
         }
     }
+}
 print(board["a5"]!)
 
 
