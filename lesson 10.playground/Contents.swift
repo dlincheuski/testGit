@@ -16,11 +16,14 @@ func fourCharacter () -> (Character) {
     let q: Character  = "\u{0471}"
         return q
 }
+
 print("\(firstCharacter())" + "\(secondCharacter())" + "\(thirdCharacter())" + "\(fourCharacter())")
+
+print("\(firstCharacter()) + \(secondCharacter()) + \(thirdCharacter()) + \(fourCharacter())")
 
 //использовать шахматное поле. с помощью функции с 2 значениями String i Int(типа: а 1)
 // вывести цвет этого поля с помощью переменной внутри функции и вызова функции
-func colorPartBoard(a: String, b: Int) -> () {
+func colorPartBoard(a: String, b: Int) {
     let color : String
     switch (a,b) {
     case let (index, b) where (index == "a") || (index == "c") || (index == "e") || (index == "g"):
@@ -43,13 +46,9 @@ func colorPartBoard(a: String, b: Int) -> () {
             let error = "такого поля нет на шахматной доске"
             print(error)
     }
-    
 }
-var colorBoard = colorPartBoard(a: "l", b: 8)
-print(colorBoard)
 
-
-
+colorPartBoard(a: "l", b: 8)
 //создать функцию, которая будет принимать и возвращать массив в обратном порядке
 //вариант 1 - создать функцию, которая будет принимать массив и возвращать массив в обратном порядке
 //вариант 2 - создать функцию, которая будет принимать Sequence и возвращать массив в обратном порядке
@@ -109,6 +108,6 @@ for var index in stringAArray {
         index = String(index.lowercased())
         StringAResult.append(index)
     }
-    
 }
+
 print(StringAResult)

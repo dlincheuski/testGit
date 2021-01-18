@@ -12,14 +12,16 @@ func printInt() {
         clouser()
     }
 }
+
 print(printInt())
 
 func printInt2(action: () -> Void) {
     for i in Range(33...35) {
     print("\(i) -")
         action()
+    }
 }
-}
+
 printInt2() {
     print("big numbers")
 }
@@ -31,9 +33,7 @@ print("Результат работы функции sorted: \(value.sorted(by:
 
 //написать функцию которая будет принимать массив Int и возвращать минимальное значение
 func filter(array: [Int], filtered: (Int?, Int) -> Bool) -> Int {
-    
     var number: Int?
-    
     for i in array {
         if filtered(number, i) {
             number = i
@@ -45,6 +45,7 @@ func filter(array: [Int], filtered: (Int?, Int) -> Bool) -> Int {
 let max = filter(array: value) { (a,b) -> Bool in
     return a == nil || a! > b
 }
+
 print("Исходные данные для работы функции filter: \(value)")
 print("Результат работы функции filter: \(max)")
 
@@ -61,6 +62,7 @@ func sortedArray(from array: [Int], filteredMax: (Int, [Int]) -> Int) -> [Int] {
     }
         return resultArray
 }
+
 let result = sortedArray(from: value) {index, array in
     var number = index
         for index in array {
@@ -71,5 +73,7 @@ let result = sortedArray(from: value) {index, array in
         }
         return number
 }
+
 print("Исходный массив для функции sortedArray \(value)")
 print("Возвращаемый массив из функции sortedArray \(result)")
+
