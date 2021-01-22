@@ -23,8 +23,8 @@ print("\(firstCharacter()) + \(secondCharacter()) + \(thirdCharacter()) + \(four
 //использовать шахматное поле. с помощью функции с 2 значениями String i Int(типа: а 1)
 // вывести цвет этого поля с помощью переменной внутри функции и вызова функции
 func colorPartBoard(a: String, b: Int) {
-    let color : String
-    switch (a,b) {
+    let color: String
+    switch (a, b) {
     case let (index, b) where (index == "a") || (index == "c") || (index == "e") || (index == "g"):
         if (b == 1) || (b == 3) || (b == 5) || (b == 7) {
             color = "поле черное"

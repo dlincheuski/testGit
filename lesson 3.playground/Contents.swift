@@ -13,7 +13,7 @@ var otherStats = myStats
 (friendStats.friendSquats, friendStats.1, friendStats.friendPullUps) = (otherStats.0, otherStats.myPushUps, otherStats.2)
 
 // посчитать разницу между двумя разными tuples и вывести его через принт
-var resultStats = ((friendStats.0-myStats.0), (friendStats.1-myStats.1), (friendStats.2-myStats.2))
+var resultStats = ((friendStats.0 - myStats.0), (friendStats.1 - myStats.1), (friendStats.2 - myStats.2))
 print((resultStats))
 
 

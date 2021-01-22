@@ -1,24 +1,24 @@
 // создать функцию, которая ничего не принимает и ничего не возвращает, только принимает одно замыкание.
 // клоужер тоже не должен ничего принимать и возвращать.
 // в тело функции добавить цикл вида for от 1 до 3. В теле сделать print, который будет выводить цифры.
-var closuer = {() in
+var closure = {() in
     print("это число")
 }
 
 func printInt() {
     for i in Range(1...3) {
         print("\(i) - ")
-        closuer()
     }
+    closure()
 }
 
 print(printInt())
 
 func printInt2(action: () -> Void) {
     for i in Range(33...35) {
-    print("\(i) -")
-        action()
+        print("\(i) -")
     }
+    action()
 }
 
 printInt2() {
@@ -41,7 +41,7 @@ func filter(array: [Int], filtered: (Int?, Int) -> Bool) -> Int {
     return number ?? 0
 }
 
-let max = filter(array: value) { (a,b) -> Bool in
+let max = filter(array: value) { (a, b) -> Bool in
     return a == nil || a! > b
 }
 
@@ -50,13 +50,13 @@ print("Результат работы функции filter: \(max)")
 
 // написать функцию которая будет принимать массив Int и возвращать отсортированный массив
 func sortedArray(from array: [Int], filteredMax: (Int, [Int]) -> Int) -> [Int] {
-    var clonArray = array
+    var cloneArray = array
     var resultArray = [Int]()
     for _ in array {
         let const = 0
-        let maxValue = filteredMax(const, clonArray)
-        let maxValueIndex = clonArray.firstIndex(of: maxValue)!
-        clonArray.remove(at: maxValueIndex)
+        let maxValue = filteredMax(const, cloneArray)
+        let maxValueIndex = cloneArray.firstIndex(of: maxValue)!
+        cloneArray.remove(at: maxValueIndex)
         resultArray.append(maxValue)
     }
     return resultArray

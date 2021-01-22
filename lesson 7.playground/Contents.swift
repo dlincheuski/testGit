@@ -5,14 +5,14 @@ for day in dayPerYearArray {
 }
 
 // создать 2 массива 1 - колличество дней в месяце, 2 - названием месяца. Вывести 2 массива в виде месяц-число дней
-let monthPerYaerArray = ["January", "February", "March", "April", "May", "June", "Jule", "Augest", "September", "October", "November", "December"]
+let monthPerYearArray = ["January", "February", "March", "April", "May", "June", "Jule", "August", "September", "October", "November", "December"]
 for month in 0..<dayPerYearArray.count {
-    print("\(monthPerYaerArray[month])   " + "\(dayPerYearArray[month])")
+    print("\(monthPerYearArray[month])   " + "\(dayPerYearArray[month])")
 }
 
 // вывести 2 массива в виде месяц-число дней в обратном порядке
 for index in 0..<dayPerYearArray.count {
-    print("\(monthPerYaerArray[dayPerYearArray.count - 1 - index])   " + "\(dayPerYearArray[dayPerYearArray.count - 1 - index])")
+    print("\(monthPerYearArray[dayPerYearArray.count - 1 - index])   " + "\(dayPerYearArray[dayPerYearArray.count - 1 - index])")
 }
 
 // создать массив тюплов вида [(month,day)]
