@@ -1,20 +1,19 @@
-//создать 4 функции которые бы выводили интересные юникоды
-//вывести на печать с помощью print все эти функции с помощью конкотонации
-func firstCharacter () -> (Character) {
-    let i : Character = "\u{0489}"
-    return i
+// создать 4 функции которые бы выводили интересные юникоды
+// вывести на печать с помощью print все эти функции с помощью конкотонации
+func firstCharacter() -> (Character) {
+    return "\u{0489}"
 }
-func secondCharacter () -> (Character) {
-    let j: Character  = "\u{047c}"
-        return j
+
+func secondCharacter() -> (Character) {
+        return "\u{047c}"
 }
-func thirdCharacter () -> (Character) {
-    let p: Character  = "\u{0472}"
-        return p
+
+func thirdCharacter() -> (Character) {
+        return "\u{0472}"
 }
-func fourCharacter () -> (Character) {
-    let q: Character  = "\u{0471}"
-        return q
+
+func fourCharacter() -> (Character) {
+        return "\u{0471}"
 }
 
 print("\(firstCharacter())" + "\(secondCharacter())" + "\(thirdCharacter())" + "\(fourCharacter())")
@@ -48,66 +47,62 @@ func colorPartBoard(a: String, b: Int) {
     }
 }
 
-colorPartBoard(a: "l", b: 8)
-//создать функцию, которая будет принимать и возвращать массив в обратном порядке
-//вариант 1 - создать функцию, которая будет принимать массив и возвращать массив в обратном порядке
-//вариант 2 - создать функцию, которая будет принимать Sequence и возвращать массив в обратном порядке
-//вариант 3 - создать функцию которая принимает Sequence и сама вызывала функцию которая вызывала бы массив (не реализовано)
-func revertSequenceArray(sequence: Int...) -> ([Int]) {
+// создать функцию, которая будет принимать и возвращать массив в обратном порядке
+// вариант 1 - создать функцию, которая будет принимать массив и возвращать массив в обратном порядке
+// вариант 2 - создать функцию, которая будет принимать Sequence и возвращать массив в обратном порядке
+// вариант 3 - создать функцию которая принимает Sequence и сама вызывала функцию которая вызывала бы массив (не реализовано)
+func reverseSequenceArray(sequence: Int...) -> ([Int]) {
     print("Последовательность для функции возврата обратного порядка \(sequence)")
-    var arrayCicl = [Int]()
+    var arrayCycle = [Int]()
     for index in 0..<sequence.count {
-        arrayCicl.append(sequence[(sequence.count - 1 - index)])
+        arrayCycle.append(sequence[(sequence.count - 1 - index)])
     }
-    return arrayCicl
+    return arrayCycle
 }
-var resalts = revertSequenceArray(sequence: 5,4,3,2,1)
-print("Последовательность после работы функции обратного порядка \(resalts)")
+
+print("Последовательность после работы функции обратного порядка \(reverseSequenceArray(sequence: 5,4,3,2,1))")
 
 var arrayForTask3 = [ 5, 2, 4, 1, 3]
 print("Исходный массив для возврата функции обратного порядка \(arrayForTask3)")
 
-func reversArray(array: [Int]) -> [Int] {
+func reverseArray(array: [Int]) -> [Int] {
     for iteration in 0..<(arrayForTask3.count - 1) {
         if iteration <= (arrayForTask3.count - 1 - iteration) {
-            
-            let temp = arrayForTask3[iteration]
+            let tempVariable = arrayForTask3[iteration]
             arrayForTask3[iteration] = arrayForTask3[(arrayForTask3.count - 1 - iteration)]
-            arrayForTask3[(arrayForTask3.count - 1 - iteration)] = temp
+            arrayForTask3[(arrayForTask3.count - 1 - iteration)] = tempVariable
         }
-        
     }
     return arrayForTask3
 }
 
-let resultReversArray = reversArray(array: arrayForTask3)
-print("Результат работы функции обратного порядка \(resultReversArray)")
+print("Результат работы функции обратного порядка \(reverseArray(array: arrayForTask3))")
 
 
 // Ввести фразу в виде переменной типа String, все числа заменить на "one" все гласные заменить на прописные, все спецсимволы на пробел остальные на строчные
 var stringA = "Я у мамы Ничего, я у Мамы классная, 33 раза я вО!, а 15 - Страстная."
-var stringAArray = [String]()
-var StringAResult = [String]()
+var stringAsArray = [String]()
+var StringAsResult = [String]()
 
 for index in stringA {
-    stringAArray.append(String(index))
+    stringAsArray.append(String(index))
 }
 
-for var index in stringAArray {
+for var index in stringAsArray {
     switch index {
     case "1", "2", "3", "4", "5", "6", "7", "8", "9", "0":
         index = "one"
-        StringAResult.append(index)
+        StringAsResult.append(index)
     case ".", ",", " ", "!", "?", "-":
         index = " "
-        StringAResult.append(index)
+        StringAsResult.append(index)
     case "а", "о", "у", "ы", "э", "я", "е", "ё", "ю", "и":
         index = String(index.uppercased())
-        StringAResult.append(index)
+        StringAsResult.append(index)
     default:
         index = String(index.lowercased())
-        StringAResult.append(index)
+        StringAsResult.append(index)
     }
 }
 
-print(StringAResult)
+print(StringAsResult)
