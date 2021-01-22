@@ -79,17 +79,3 @@ for indexHorizontal in horizontal {
 }
 
 print(board["a5"]!)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
