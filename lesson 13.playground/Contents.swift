@@ -1,135 +1,135 @@
 // с оздать структуру с данными Имя, Фамилия, Год рождения, средний балл оценок
 struct Student {
     var firstName: String
-    var sername: String
-    var yearBirthday: Int
-    var equilBall: Double
+    var surname: String
+    var birthdayYear: Int
+    var averageMark: Double
 }
 
 // сделать несколько экземпляров и заполнить их  данными
-var student1 = Student(firstName: "Lex", sername: "Fox", yearBirthday: 1994, equilBall: 7.8)
-var student2 = Student(firstName: "Pol", sername: "MgGill", yearBirthday: 1995, equilBall: 6.4)
-var student3 = Student(firstName: "Piter", sername: "MgGill", yearBirthday: 1994, equilBall: 8.9)
-var student4 = Student(firstName: "Yan", sername: "Dzi", yearBirthday: 1996, equilBall: 5.4)
+var student1 = Student(firstName: "Lex", surname: "Fox", birthdayYear: 1994, averageMark: 7.8)
+var student2 = Student(firstName: "Pol", surname: "MgGill", birthdayYear: 1995, averageMark: 6.4)
+var student3 = Student(firstName: "Piter", surname: "MgGill", birthdayYear: 1994, averageMark: 8.9)
+var student4 = Student(firstName: "Yan", surname: "Dzi", birthdayYear: 1996, averageMark: 5.4)
 
 // положить экземпляры в массив
-var studentBookStructs = [student1, student2, student3, student4]
+var studentBooksStruct = [student1, student2, student3, student4]
 
 // создать функцию, которая будет принимать массив и возвращать порядковый номер и данные студентов
-func returnStudentInfo (array : [Student]) {
+func printStudentInfo (students : [Student]) {
     print("Действие функции по структуре по информации из журнала(вывод информации из журнала)")
-    for i in 0 ..< (array.count) {
-        print("\(i+1). Имя - \(array[i].firstName), Фамилия - \(array[i].sername), Год рождкния - \(array[i].yearBirthday)г., средний балл - \(array[i].equilBall)  ")
+    for i in 0 ..< (students.count) {
+        print("\(i + 1 ). Имя - \(students[i].firstName), Фамилия - \(students[i].surname), Год рождкния - \(students[i].birthdayYear)г., средний балл - \(students[i].averageMark)  ")
     }
 }
 
-returnStudentInfo(array: studentBookStructs)
+printStudentInfo(students: studentBooksStruct)
 
 // искользуя sorted отсортировать массив по среднему баллу по убыванию и распечатать
-print(studentBookStructs.sorted { (a, b) -> Bool in
-    return a.equilBall < b.equilBall
+print(studentBooksStruct.sorted { (a, b) -> Bool in
+    return a.averageMark < b.averageMark
 })
 
 // -//- по фамилии, если фамилии одинаковы то сортировка должна быть по имени и распечатать
-func studentBookStructsSortedSername (array: [Student]) {
-    var studentBookStructsSorted = array.sorted { (a, b) -> Bool in
-        return a.sername < b.sername
+func sortStudentBooksStructBySurname (students: [Student]) {
+    var sortedStudentBooksStruct = students.sorted { (a, b) -> Bool in
+        return a.surname < b.surname
     }
     
-    for i in 0 ..< (studentBookStructsSorted.count - 1) {
-        let element = (studentBookStructsSorted.count - 1 - i)
+    for i in 0 ..< (sortedStudentBooksStruct.count - 1) {
+        let element = (sortedStudentBooksStruct.count - 1 - i)
         for j in 0 ..< (element) {
-            if (studentBookStructsSorted[j].sername == studentBookStructsSorted[element].sername) && (studentBookStructsSorted[j].firstName > studentBookStructsSorted[element].firstName) {
-                    let temp = studentBookStructsSorted[j]
-                    studentBookStructsSorted[j] = studentBookStructsSorted[element]
-                    studentBookStructsSorted[element] = temp
+            if (sortedStudentBooksStruct[j].surname == sortedStudentBooksStruct[element].surname) && (sortedStudentBooksStruct[j].firstName > sortedStudentBooksStruct[element].firstName) {
+                    let temp = sortedStudentBooksStruct[j]
+                    sortedStudentBooksStruct[j] = sortedStudentBooksStruct[element]
+                    sortedStudentBooksStruct[element] = temp
             }
         }
     }
     
-    for i in 0 ..< studentBookStructsSorted.count {
-        print("\(i+1). Имя - \(studentBookStructsSorted[i].firstName), Фамилия - \(studentBookStructsSorted[i].sername), Год рождкния - \(studentBookStructsSorted[i].yearBirthday)г., средний балл - \(studentBookStructsSorted[i].equilBall)  ")
+    for i in 0 ..< sortedStudentBooksStruct.count {
+        print("\(i+1). Имя - \(sortedStudentBooksStruct[i].firstName), Фамилия - \(sortedStudentBooksStruct[i].surname), Год рождкния - \(sortedStudentBooksStruct[i].birthdayYear)г., средний балл - \(sortedStudentBooksStruct[i].averageMark)  ")
     }
 }
 
-studentBookStructsSortedSername(array: studentBookStructs)
+sortStudentBooksStructBySurname(students: studentBooksStruct)
 
 // создать массив, идентичный имеющемуся, внести изменения в данные
-var studentBookStructs1 = studentBookStructs
-studentBookStructs1[0].firstName = "Anna"
-studentBookStructs1[1].yearBirthday = 1990
-studentBookStructs1[2].equilBall = 9.9
-studentBookStructs1[3].sername = "Yuyi"
-returnStudentInfo(array: studentBookStructs)
-returnStudentInfo(array: studentBookStructs1)
+var studentBooksStruct1 = studentBooksStruct
+studentBooksStruct1[0].firstName = "Anna"
+studentBooksStruct1[1].birthdayYear = 1990
+studentBooksStruct1[2].averageMark = 9.9
+studentBooksStruct1[3].surname = "Yuyi"
+printStudentInfo(students: studentBooksStruct)
+printStudentInfo(students: studentBooksStruct1)
 
 // сделать все тоже же самое для класса
 class StudentClass {
     var firstName: String
-    var sername: String
-    var yearBirthday: Int
-    var equilBall: Double
+    var surname: String
+    var birthdayYear: Int
+    var averageMark: Double
     
-    init(firstName: String, sername: String, yearBirthday: Int, equilBall: Double) {
+    init(firstName: String, surname: String, birthdayYear: Int, averageMark: Double) {
         self.firstName = firstName
-        self.sername = sername
-        self.yearBirthday = yearBirthday
-        self.equilBall = equilBall
+        self.surname = surname
+        self.birthdayYear = birthdayYear
+        self.averageMark = averageMark
     }
 }
 
 // сделать несколько экземпляров и заполнить их  данными
-var studentClass1 = StudentClass(firstName: "Lex", sername: "Fox", yearBirthday: 1994, equilBall: 7.8)
-var studentClass2 = StudentClass(firstName: "Pol", sername: "MgGill", yearBirthday: 1995, equilBall: 6.4)
-var studentClass3 = StudentClass(firstName: "Piter", sername: "MgGill", yearBirthday: 1994, equilBall: 8.9)
-var studentClass4 = StudentClass(firstName: "Yan", sername: "Dzi", yearBirthday: 1996, equilBall: 5.4)
+var studentClass1 = StudentClass(firstName: "Lex", surname: "Fox", birthdayYear: 1994, averageMark: 7.8)
+var studentClass2 = StudentClass(firstName: "Pol", surname: "MgGill", birthdayYear: 1995, averageMark: 6.4)
+var studentClass3 = StudentClass(firstName: "Piter", surname: "MgGill", birthdayYear: 1994, averageMark: 8.9)
+var studentClass4 = StudentClass(firstName: "Yan", surname: "Dzi", birthdayYear: 1996, averageMark: 5.4)
 
 // положить экземпляры в массив
-var studentBookClass = [studentClass1, studentClass2, studentClass3, studentClass4]
+var studentBooksClases = [studentClass1, studentClass2, studentClass3, studentClass4]
 
 // создать функцию, которая будет принимать массив и возвращать порядковый номер и данные студентов
-func returnStudentInfo (array : [StudentClass]) {
+func printStudentInfo (students : [StudentClass]) {
     print("Действие функции по классу по информации из журнала")
-    for i in 0 ..< (array.count) {
-        print("\(i+1). Имя - \(array[i].firstName), Фамилия - \(array[i].sername), Год рождкния - \(array[i].yearBirthday)г., средний балл - \(array[i].equilBall)  ")
+    for i in 0 ..< (students.count) {
+        print("\(i + 1). Имя - \(students[i].firstName), Фамилия - \(students[i].surname), Год рождкния - \(students[i].birthdayYear)г., средний балл - \(students[i].averageMark)  ")
     }
 }
-returnStudentInfo(array: studentBookClass)
+printStudentInfo(students: studentBooksClases)
 
 // искользуя sorted отсортировать массив по среднему баллу по убыванию и распечатать
-print(studentBookClass.sorted { (a, b) -> Bool in
-    return a.equilBall < b.equilBall
+print(studentBooksClases.sorted { (a, b) -> Bool in
+    return a.averageMark < b.averageMark
 })
 
 // -//- по фамилии, если фамилии одинаковы то сортировка должна быть по имени и распечатать
-func studentBookClassSortedSername (array: [StudentClass]) {
-    var studentBookClassSorted = array.sorted { (a, b) -> Bool in
-        return a.sername < b.sername
+func sortStudentBooksClasesBySurname (students: [StudentClass]) {
+    var sortStudentBooksClases = students.sorted { (a, b) -> Bool in
+        return a.surname < b.surname
     }
     
-    for i in 0 ..< (studentBookClassSorted.count - 1) {
-        let element = (studentBookClassSorted.count - 1 - i)
+    for i in 0 ..< (sortStudentBooksClases.count - 1) {
+        let element = (sortStudentBooksClases.count - 1 - i)
         for j in 0 ..< (element) {
-            if (studentBookClassSorted[j].sername == studentBookClassSorted[element].sername) && (studentBookClassSorted[j].firstName > studentBookClassSorted[element].firstName) {
-                let temp = studentBookClassSorted[j]
-                studentBookClassSorted[j] = studentBookClassSorted[element]
-                studentBookClassSorted[element] = temp
+            if (sortStudentBooksClases[j].surname == sortStudentBooksClases[element].surname) && (sortStudentBooksClases[j].firstName > sortStudentBooksClases[element].firstName) {
+                let temp = sortStudentBooksClases[j]
+                sortStudentBooksClases[j] = sortStudentBooksClases[element]
+                sortStudentBooksClases[element] = temp
             }
         }
     }
     
-    for i in 0 ..< studentBookClassSorted.count {
-        print("\(i+1). Имя - \(studentBookClassSorted[i].firstName), Фамилия - \(studentBookClassSorted[i].sername), Год рождкния - \(studentBookClassSorted[i].yearBirthday)г., средний балл - \(studentBookClassSorted[i].equilBall)  ")
+    for i in 0 ..< sortStudentBooksClases.count {
+        print("\(i+1). Имя - \(sortStudentBooksClases[i].firstName), Фамилия - \(sortStudentBooksClases[i].surname), Год рождкния - \(sortStudentBooksClases[i].birthdayYear)г., средний балл - \(sortStudentBooksClases[i].averageMark)  ")
     }
 }
 
-studentBookClassSortedSername(array: studentBookClass)
+sortStudentBooksClasesBySurname(students: studentBooksClases)
 
 // создать массив, идентичный имеющемуся, внести изменения в данные
-var studentBookClass1 = studentBookClass
-studentBookClass1[0].firstName = "Anna"
-studentBookClass1[1].yearBirthday = 1990
-studentBookClass1[2].equilBall = 9.9
-studentBookClass1[3].sername = "Yuyi"
-returnStudentInfo(array: studentBookClass)
-returnStudentInfo(array: studentBookClass1)
+var studentBooksClases1 = studentBooksClases
+studentBooksClases1[0].firstName = "Anna"
+studentBooksClases1[1].birthdayYear = 1990
+studentBooksClases1[2].averageMark = 9.9
+studentBooksClases1[3].surname = "Yuyi"
+printStudentInfo(students: studentBooksClases)
+printStudentInfo(students: studentBooksClases1)
