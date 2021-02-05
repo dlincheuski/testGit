@@ -4,7 +4,7 @@
 // добавить компьютер проперти которое будет считать сколько студенту лет на основании даты рождения
 // добавить компьютер проперти которое будет считать сколько студент учился
 // за основу взять что учится мы начинаем с 6 лет и если студенту лет меньше то должен быть 0
-import UIKit
+import Foundation
 
 class Student {
     var firstName: String
@@ -17,31 +17,31 @@ class Student {
         self.birthday = birthday
     }
     
-    var StudentAge: Int {
+    var studentAge: Int {
         get {
-            return ((today.Date - birthday.Date) + (today.Month * 30 - birthday.Month * 30) + (today.Year * 365 - birthday.Year * 365)) / 365
+            return ((today.date - birthday.date) + (today.month * 30 - birthday.month * 30) + (today.year * 365 - birthday.year * 365)) / 365
         }
     }
     
     var studyTime: Int {
         get {
-            if (((today.Date - birthday.Date) + (today.Month * 30 - birthday.Month * 30) + (today.Year * 365 - birthday.Year * 365)) / 365 - 6) <= 0 {
+            if (((today.date - birthday.date) + (today.month * 30 - birthday.month * 30) + (today.year * 365 - birthday.year * 365)) / 365 - 6) <= 0 {
                 return 0
             } else {
-                return ((today.Date - birthday.Date) + (today.Month * 30 - birthday.Month * 30) + (today.Year * 365 - birthday.Year * 365)) / 365 - 6
+                return ((today.date - birthday.date) + (today.month * 30 - birthday.month * 30) + (today.year * 365 - birthday.year * 365)) / 365 - 6
             }
         }
     }
 }
 
 struct BirthdayDate {
-    var Date: Int
-    var Month: Int
-    var Year: Int
+    var date: Int
+    var month: Int
+    var year: Int
 }
 
-var today = BirthdayDate(Date: 23, Month: 02, Year: 2021)
-var student1 = Student(firstName: "Clara", surname: "Sting", birthday: BirthdayDate(Date: 23, Month: 02, Year: 2010))
+var today = BirthdayDate(date: 23, month: 02, year: 2021)
+var student1 = Student(firstName: "Clara", surname: "Sting", birthday: BirthdayDate(date: 23, month: 02, year: 2010))
 print(student1.studyTime)
 
 // создать структуру отрезок имеющий 2 структуры точки , кажадая из которых содержит переменные а и б (это стори пропертис)
