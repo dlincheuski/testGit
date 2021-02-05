@@ -101,6 +101,7 @@ enum StartChessBoardSquarHorizontal: Int {
     case seven = 7
     case eight = 8
 }
+
 // инициализация
 var chessKingBlack = СhessPiece.king(color: .blackKing, vertical: .e, horizontal: .eight)
 var chessQueenBlack = СhessPiece.queen(color: .blackQueen, vertical: .d, horizontal: .eight)
@@ -137,23 +138,24 @@ var chessPawnWhite7 = СhessPiece.pawn(color: .whitePawn, vertical: .g, horizont
 var chessPawnWhite8 = СhessPiece.pawn(color: .whitePawn, vertical: .h, horizontal: .two)
  
 var piecesArray = [chessKingBlack, chessQueenBlack, chessCastleBlack1, chessCastleBlack2, chessBishopBlack1, chessBishopBlack2, chessKnightBlack1, chessKnightBlack2, chessPawnBlack1, chessPawnBlack2, chessPawnBlack3, chessPawnBlack4, chessPawnBlack5, chessPawnBlack6, chessPawnBlack7, chessKingWhite, chessQueenWhite, chessCastleWhite1, chessCastleWhite2, chessBishopWhite1, chessBishopWhite2, chessKnightWhite1, chessKnightWhite2, chessPawnWhite1, chessPawnWhite2, chessPawnWhite3, chessPawnWhite4, chessPawnWhite5, chessPawnWhite6, chessPawnWhite7, chessPawnWhite8]
+
 // стартовая позиция
-var firstHorisontalArray = [ColorChessPiece.blackCastle.rawValue, ColorChessPiece.blackKnight.rawValue, ColorChessPiece.blackBishop.rawValue, ColorChessPiece.blackQueen.rawValue, ColorChessPiece.blackKing.rawValue, ColorChessPiece.blackBishop.rawValue, ColorChessPiece.blackKnight.rawValue, ColorChessPiece.blackCastle.rawValue]
-var secondHorisontalArray = [ColorChessPiece.blackPawn.rawValue, ColorChessPiece.blackPawn.rawValue, ColorChessPiece.blackPawn.rawValue, ColorChessPiece.blackPawn.rawValue, ColorChessPiece.blackPawn.rawValue, ColorChessPiece.blackPawn.rawValue, ColorChessPiece.blackPawn.rawValue, ColorChessPiece.blackPawn.rawValue]
-var thirdHorisontalArray = [ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue]
-var quartersHorisontalArray = [ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue]
-var fifthHorisontalArray = [ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue]
-var sixthHorisontalArray = [ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue]
-var seventhHorisontalArray = [ColorChessPiece.whitePawn.rawValue, ColorChessPiece.whitePawn.rawValue, ColorChessPiece.whitePawn.rawValue, ColorChessPiece.whitePawn.rawValue, ColorChessPiece.whitePawn.rawValue, ColorChessPiece.whitePawn.rawValue, ColorChessPiece.whitePawn.rawValue, ColorChessPiece.whitePawn.rawValue]
-var eighthHorisontalArray = [ColorChessPiece.whiteCastle.rawValue, ColorChessPiece.whiteKnight.rawValue, ColorChessPiece.whiteBishop.rawValue, ColorChessPiece.whiteQueen.rawValue, ColorChessPiece.whiteKing.rawValue, ColorChessPiece.whiteBishop.rawValue, ColorChessPiece.whiteKnight.rawValue, ColorChessPiece.whiteCastle.rawValue]
-var startPositionArray = [eighthHorisontalArray, seventhHorisontalArray, sixthHorisontalArray, fifthHorisontalArray, quartersHorisontalArray, thirdHorisontalArray, secondHorisontalArray, firstHorisontalArray]
+var firstHorizontalArray = [ColorChessPiece.blackCastle.rawValue, ColorChessPiece.blackKnight.rawValue, ColorChessPiece.blackBishop.rawValue, ColorChessPiece.blackQueen.rawValue, ColorChessPiece.blackKing.rawValue, ColorChessPiece.blackBishop.rawValue, ColorChessPiece.blackKnight.rawValue, ColorChessPiece.blackCastle.rawValue]
+var secondHorizontalArray = [ColorChessPiece.blackPawn.rawValue, ColorChessPiece.blackPawn.rawValue, ColorChessPiece.blackPawn.rawValue, ColorChessPiece.blackPawn.rawValue, ColorChessPiece.blackPawn.rawValue, ColorChessPiece.blackPawn.rawValue, ColorChessPiece.blackPawn.rawValue, ColorChessPiece.blackPawn.rawValue]
+var thirdHorizontalArray = [ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue]
+var quartersHorizontalArray = [ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue]
+var fifthHorizontalArray = [ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue]
+var sixthHorizontalArray = [ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue, ColorChessPiece.whitePiece.rawValue, ColorChessPiece.blackPiece.rawValue]
+var seventhHorizontalArray = [ColorChessPiece.whitePawn.rawValue, ColorChessPiece.whitePawn.rawValue, ColorChessPiece.whitePawn.rawValue, ColorChessPiece.whitePawn.rawValue, ColorChessPiece.whitePawn.rawValue, ColorChessPiece.whitePawn.rawValue, ColorChessPiece.whitePawn.rawValue, ColorChessPiece.whitePawn.rawValue]
+var eighthHorizontalArray = [ColorChessPiece.whiteCastle.rawValue, ColorChessPiece.whiteKnight.rawValue, ColorChessPiece.whiteBishop.rawValue, ColorChessPiece.whiteQueen.rawValue, ColorChessPiece.whiteKing.rawValue, ColorChessPiece.whiteBishop.rawValue, ColorChessPiece.whiteKnight.rawValue, ColorChessPiece.whiteCastle.rawValue]
+var startPositionArray = [eighthHorizontalArray, seventhHorizontalArray, sixthHorizontalArray, fifthHorizontalArray, quartersHorizontalArray, thirdHorizontalArray, secondHorizontalArray, firstHorizontalArray]
 for value in startPositionArray {
     print("\(value[0]) \(value[1]) \(value[2]) \(value[3]) \(value[4]) \(value[5]) \(value[6]) \(value[7])")
 }
 
 func move(pieceNew: СhessPiece) {
     switch pieceNew {
-    case .pawn(let color, let vertical, let horizontal):
+    case .pawn (let color, let vertical, let horizontal):
         if color == .whitePawn {
             startPositionArray[horizontal.rawValue - 1][vertical.rawValue - 1] = ColorChessPiece.whitePawn.rawValue
         } else if color == .blackPawn {
