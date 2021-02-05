@@ -13,55 +13,55 @@ var student3 = Student(firstName: "Piter", surname: "MgGill", birthdayYear: 1994
 var student4 = Student(firstName: "Yan", surname: "Dzi", birthdayYear: 1996, averageMark: 5.4)
 
 // положить экземпляры в массив
-var studentBooksStruct = [student1, student2, student3, student4]
+var studentBooks1 = [student1, student2, student3, student4]
 
 // создать функцию, которая будет принимать массив и возвращать порядковый номер и данные студентов
-func printStudentInfo (students : [Student]) {
+func printStudentsInfo (students : [Student]) {
     print("Действие функции по структуре по информации из журнала(вывод информации из журнала)")
     for i in 0 ..< (students.count) {
         print("\(i + 1 ). Имя - \(students[i].firstName), Фамилия - \(students[i].surname), Год рождкния - \(students[i].birthdayYear)г., средний балл - \(students[i].averageMark)  ")
     }
 }
 
-printStudentInfo(students: studentBooksStruct)
+printStudentsInfo(students: studentBooks1)
 
 // искользуя sorted отсортировать массив по среднему баллу по убыванию и распечатать
-print(studentBooksStruct.sorted { (a, b) -> Bool in
+print(studentBooks1.sorted { (a, b) -> Bool in
     return a.averageMark < b.averageMark
 })
 
 // -//- по фамилии, если фамилии одинаковы то сортировка должна быть по имени и распечатать
-func sortStudentBooksStructBySurname (students: [Student]) {
-    var sortedStudentBooksStruct = students.sorted { (a, b) -> Bool in
+func sortStudentBooks1BySurname (students: [Student]) {
+    var sortStudentBooks1 = students.sorted { (a, b) -> Bool in
         return a.surname < b.surname
     }
     
-    for i in 0 ..< (sortedStudentBooksStruct.count - 1) {
-        let element = (sortedStudentBooksStruct.count - 1 - i)
+    for i in 0 ..< (sortStudentBooks1.count - 1) {
+        let element = (sortStudentBooks1.count - 1 - i)
         for j in 0 ..< (element) {
-            if (sortedStudentBooksStruct[j].surname == sortedStudentBooksStruct[element].surname) && (sortedStudentBooksStruct[j].firstName > sortedStudentBooksStruct[element].firstName) {
-                    let temp = sortedStudentBooksStruct[j]
-                    sortedStudentBooksStruct[j] = sortedStudentBooksStruct[element]
-                    sortedStudentBooksStruct[element] = temp
+            if (sortStudentBooks1[j].surname == sortStudentBooks1[element].surname) && (sortStudentBooks1[j].firstName > sortStudentBooks1[element].firstName) {
+                    let temp = sortStudentBooks1[j]
+                    sortStudentBooks1[j] = sortStudentBooks1[element]
+                    sortStudentBooks1[element] = temp
             }
         }
     }
     
-    for i in 0 ..< sortedStudentBooksStruct.count {
-        print("\(i+1). Имя - \(sortedStudentBooksStruct[i].firstName), Фамилия - \(sortedStudentBooksStruct[i].surname), Год рождкния - \(sortedStudentBooksStruct[i].birthdayYear)г., средний балл - \(sortedStudentBooksStruct[i].averageMark)  ")
+    for i in 0 ..< sortStudentBooks1.count {
+        print("\(i+1). Имя - \(sortStudentBooks1[i].firstName), Фамилия - \(sortStudentBooks1[i].surname), Год рождкния - \(sortStudentBooks1[i].birthdayYear)г., средний балл - \(sortStudentBooks1[i].averageMark)  ")
     }
 }
 
-sortStudentBooksStructBySurname(students: studentBooksStruct)
+sortStudentBooks1BySurname(students: studentBooks1)
 
 // создать массив, идентичный имеющемуся, внести изменения в данные
-var studentBooksStruct1 = studentBooksStruct
-studentBooksStruct1[0].firstName = "Anna"
-studentBooksStruct1[1].birthdayYear = 1990
-studentBooksStruct1[2].averageMark = 9.9
-studentBooksStruct1[3].surname = "Yuyi"
-printStudentInfo(students: studentBooksStruct)
-printStudentInfo(students: studentBooksStruct1)
+var studentBooks11 = studentBooks1
+studentBooks11[0].firstName = "Anna"
+studentBooks11[1].birthdayYear = 1990
+studentBooks11[2].averageMark = 9.9
+studentBooks11[3].surname = "Yuyi"
+printStudentsInfo(students: studentBooks1)
+printStudentsInfo(students: studentBooks11)
 
 // сделать все тоже же самое для класса
 class StudentClass {
@@ -85,51 +85,51 @@ var studentClass3 = StudentClass(firstName: "Piter", surname: "MgGill", birthday
 var studentClass4 = StudentClass(firstName: "Yan", surname: "Dzi", birthdayYear: 1996, averageMark: 5.4)
 
 // положить экземпляры в массив
-var studentBooksClases = [studentClass1, studentClass2, studentClass3, studentClass4]
+var studentBooks2 = [studentClass1, studentClass2, studentClass3, studentClass4]
 
 // создать функцию, которая будет принимать массив и возвращать порядковый номер и данные студентов
-func printStudentInfo (students : [StudentClass]) {
+func printStudentsInfo (students: [StudentClass]) {
     print("Действие функции по классу по информации из журнала")
     for i in 0 ..< (students.count) {
         print("\(i + 1). Имя - \(students[i].firstName), Фамилия - \(students[i].surname), Год рождкния - \(students[i].birthdayYear)г., средний балл - \(students[i].averageMark)  ")
     }
 }
-printStudentInfo(students: studentBooksClases)
+printStudentsInfo(students: studentBooks2)
 
 // искользуя sorted отсортировать массив по среднему баллу по убыванию и распечатать
-print(studentBooksClases.sorted { (a, b) -> Bool in
+print(studentBooks2.sorted { (a, b) -> Bool in
     return a.averageMark < b.averageMark
 })
 
 // -//- по фамилии, если фамилии одинаковы то сортировка должна быть по имени и распечатать
-func sortStudentBooksClasesBySurname (students: [StudentClass]) {
-    var sortStudentBooksClases = students.sorted { (a, b) -> Bool in
+func sortStudentBooks2BySurname (students: [StudentClass]) {
+    var sortStudentBooks2 = students.sorted { (a, b) -> Bool in
         return a.surname < b.surname
     }
     
-    for i in 0 ..< (sortStudentBooksClases.count - 1) {
-        let element = (sortStudentBooksClases.count - 1 - i)
+    for i in 0 ..< (sortStudentBooks2.count - 1) {
+        let element = (sortStudentBooks2.count - 1 - i)
         for j in 0 ..< (element) {
-            if (sortStudentBooksClases[j].surname == sortStudentBooksClases[element].surname) && (sortStudentBooksClases[j].firstName > sortStudentBooksClases[element].firstName) {
-                let temp = sortStudentBooksClases[j]
-                sortStudentBooksClases[j] = sortStudentBooksClases[element]
-                sortStudentBooksClases[element] = temp
+            if (sortStudentBooks2[j].surname == sortStudentBooks2[element].surname) && (sortStudentBooks2[j].firstName > sortStudentBooks2[element].firstName) {
+                let temp = sortStudentBooks2[j]
+                sortStudentBooks2[j] = sortStudentBooks2[element]
+                sortStudentBooks2[element] = temp
             }
         }
     }
     
-    for i in 0 ..< sortStudentBooksClases.count {
-        print("\(i+1). Имя - \(sortStudentBooksClases[i].firstName), Фамилия - \(sortStudentBooksClases[i].surname), Год рождкния - \(sortStudentBooksClases[i].birthdayYear)г., средний балл - \(sortStudentBooksClases[i].averageMark)  ")
+    for i in 0 ..< sortStudentBooks2.count {
+        print("\(i+1). Имя - \(sortStudentBooks2[i].firstName), Фамилия - \(sortStudentBooks2[i].surname), Год рождкния - \(sortStudentBooks2[i].birthdayYear)г., средний балл - \(sortStudentBooks2[i].averageMark)  ")
     }
 }
 
-sortStudentBooksClasesBySurname(students: studentBooksClases)
+sortStudentBooks2BySurname(students: studentBooks2)
 
 // создать массив, идентичный имеющемуся, внести изменения в данные
-var studentBooksClases1 = studentBooksClases
-studentBooksClases1[0].firstName = "Anna"
-studentBooksClases1[1].birthdayYear = 1990
-studentBooksClases1[2].averageMark = 9.9
-studentBooksClases1[3].surname = "Yuyi"
-printStudentInfo(students: studentBooksClases)
-printStudentInfo(students: studentBooksClases1)
+var studentBooks21 = studentBooks2
+studentBooks21[0].firstName = "Anna"
+studentBooks21[1].birthdayYear = 1990
+studentBooks21[2].averageMark = 9.9
+studentBooks21[3].surname = "Yuyi"
+printStudentsInfo(students: studentBooks2)
+printStudentsInfo(students: studentBooks21)
