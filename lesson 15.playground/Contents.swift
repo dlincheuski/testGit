@@ -7,17 +7,13 @@ struct FileDescription {
     var fileName: String {
 /* реализую метод из функционала NSString, разделяющий строку на элементы по разделяющему символу '\' и все элементы внесу в массив, с последним элементом проделаю такую же операцию с разделяющим символом "." и переменной fileName присвою значение суммы элементов массива без последнего */
         let words = filePath.components(separatedBy: "\\")
-        let names = words[(words.count - 1)].components(separatedBy: ".")
+        let names = words.last!.components(separatedBy: ".")
         var fileName = ""
         if words.count <= 2 {
-            fileName = words[0]
+            fileName = words.first!
         } else {
             for index in 0 ..< (names.count - 1) {
-                if index == (names.count - 2) {
-                    fileName = "\(fileName)\(names[index])"
-                } else {
-                    fileName = "\(fileName)\(names[index])."
-                }
+                fileName = index == (names.count - 2) ? "\(fileName)\(names[index])" : "\(fileName)\(names[index])."
             }
         }
         return fileName
@@ -35,8 +31,8 @@ struct FileDescription {
     var typeFile: String {
 /* использую массив из вычисляемого свойства fileName и с последним элементом проделаю такую же операцию с разделяющим символом "." и переменной typeFile присвою значение последнего элемента массива */
         let words = filePath.components(separatedBy: " ")
-        let names = words[(words.count-1)].components(separatedBy: ".")
-        let typeFile = names[names.count-1]
+        let names = words[(words.count - 1)].components(separatedBy: ".")
+        let typeFile = names[names.count - 1]
         return typeFile
     }
     
@@ -61,7 +57,6 @@ enum Palette: Int, CaseIterable {
     case blue = 0x007aff
     case red = 0xff3b30
     case black = 0x000000
-    
 
     static var colorsCount = {
         Palette.allCases.count
