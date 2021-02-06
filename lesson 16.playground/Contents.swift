@@ -33,17 +33,18 @@ var finishPoint = FinishPoint(widthX: 1, lenghtY: 1)
 
 // реализация функции печати комнаты
 func printRoom(x: Int, y: Int) {
-    for i in 0 ..< x {
+    for coordinateX in 0 ..< x {
         var roomlenghtYCoordinates = [Character]()
-        for j in 0 ..< y {
-            if i == human.lenghtY && j == human.widthX {
-                roomlenghtYCoordinates.append("\u{20dd}")
-            } else if i == box.lenghtY && j == box.widthX {
-                roomlenghtYCoordinates.append("\u{2042}")
-            } else if i == finishPoint.lenghtY && j == finishPoint.widthX {
-                roomlenghtYCoordinates.append("\u{2714}")
-            } else {
-                roomlenghtYCoordinates.append("\u{205c}")
+        for coordinateY in 0 ..< y {
+            switch (coordinateX, coordinateY) {
+                case (human.lenghtY, human.widthX):
+                    roomlenghtYCoordinates.append("\u{20dd}")
+                case (box.lenghtY, box.widthX):
+                    roomlenghtYCoordinates.append("\u{2042}")
+                case (finishPoint.lenghtY, finishPoint.widthX):
+                    roomlenghtYCoordinates.append("\u{2714}")
+                default:
+                    roomlenghtYCoordinates.append("\u{205c}")
             }
         }
         print("\(roomlenghtYCoordinates)")
