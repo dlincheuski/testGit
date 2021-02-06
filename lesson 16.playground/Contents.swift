@@ -34,20 +34,20 @@ var finishPoint = FinishPoint(widthX: 1, lenghtY: 1)
 // реализация функции печати комнаты
 func printRoom(x: Int, y: Int) {
     for coordinateX in 0 ..< x {
-        var roomlenghtYCoordinates = [Character]()
+        var roomLenghtYCoordinates = [Character]()
         for coordinateY in 0 ..< y {
             switch (coordinateX, coordinateY) {
                 case (human.lenghtY, human.widthX):
-                    roomlenghtYCoordinates.append("\u{20dd}")
+                    roomLenghtYCoordinates.append("\u{20dd}")
                 case (box.lenghtY, box.widthX):
-                    roomlenghtYCoordinates.append("\u{2042}")
+                    roomLenghtYCoordinates.append("\u{2042}")
                 case (finishPoint.lenghtY, finishPoint.widthX):
-                    roomlenghtYCoordinates.append("\u{2714}")
+                    roomLenghtYCoordinates.append("\u{2714}")
                 default:
-                    roomlenghtYCoordinates.append("\u{205c}")
+                    roomLenghtYCoordinates.append("\u{205c}")
             }
         }
-        print("\(roomlenghtYCoordinates)")
+        print("\(roomLenghtYCoordinates)")
     }
 }
 
@@ -64,48 +64,68 @@ func moveHuman(move: Move) {
     let verticalBorder = room.lenghtY
     switch move {
     case .left:
+        print("You choise move left")
         if human.widthX <=  0 || box.widthX <= 0{
             print("stop wall there")
         } else {
         human.widthX -= 1
-            if human.widthX == box.widthX && human.lenghtY == box.lenghtY  {
+        switch (human.widthX, human.lenghtY) {
+            case (box.widthX, box.lenghtY):
                 box.widthX -= 1
+            default:
+                break
             }
         }
     case .right:
+        print("You choise move right")
         if human.widthX >= horizontalBorder - 1 || box.widthX >= horizontalBorder - 1 {
             print("stop wall there")
         } else {
         human.widthX += 1
-            if human.widthX == box.widthX && human.lenghtY == box.lenghtY  {
-                box.widthX += 1
+            switch (human.widthX, human.lenghtY) {
+                case (box.widthX, box.lenghtY):
+                    box.widthX += 1
+                default:
+                    break
+                }
             }
-        }
     case .up:
+        print("You choise move up")
         if human.lenghtY <= 0 || box.lenghtY <= 0 {
             print("stop wall there")
         } else {
         human.lenghtY -= 1
-            if human.lenghtY == box.lenghtY && human.widthX == box.widthX {
-                box.lenghtY -= 1
+            switch (human.lenghtY, human.widthX) {
+                case (box.lenghtY, box.widthX ):
+                    box.lenghtY -= 1
+                default:
+                    break
+                }
             }
-        }
     case .down:
+        print("You choise move down")
         if human.lenghtY >= verticalBorder - 1 || box.lenghtY >= verticalBorder - 1 {
             print("stop wall there")
         } else {
         human.lenghtY += 1
-            if human.lenghtY == box.lenghtY && human.widthX == box.widthX  {
-                box.lenghtY += 1
-            }
+            switch (human.lenghtY, human.widthX) {
+                case (box.lenghtY, box.widthX):
+                    box.lenghtY += 1
+                default:
+                    break
+                }
         }
 }
     print("")
     printRoom(x: room.lenghtY, y: room.widthX)
     print("")
-    if box.lenghtY == finishPoint.lenghtY && box.widthX == finishPoint.widthX {
+    switch (box.lenghtY, box.widthX) {
+    case (finishPoint.lenghtY, finishPoint.widthX):
         print("you win")
+    default:
+        print("Whats you next move?")
     }
+
 }
 
 moveHuman(move: .left)
