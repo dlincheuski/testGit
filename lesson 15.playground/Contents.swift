@@ -31,8 +31,8 @@ struct FileDescription {
     var typeFile: String {
 /* использую массив из вычисляемого свойства fileName и с последним элементом проделаю такую же операцию с разделяющим символом "." и переменной typeFile присвою значение последнего элемента массива */
         let words = filePath.components(separatedBy: " ")
-        let names = words[(words.count - 1)].components(separatedBy: ".")
-        let typeFile = names[names.count - 1]
+        let names = words.last!.components(separatedBy: ".")
+        let typeFile = names.last!
         return typeFile
     }
     
