@@ -66,7 +66,7 @@ enum Palette: Int, CaseIterable {
         get {
             return Palette.allCases.sorted {
                 $0.rawValue > $1.rawValue
-            }[0]
+            }.first!
         }
     }
     
@@ -74,13 +74,11 @@ enum Palette: Int, CaseIterable {
         get {
             return Palette.allCases.sorted {
                 $0.rawValue < $1.rawValue
-            }[0]
+            }.first!
         }
     }
 }
 
-print(Palette.allCases)
-print(Palette.allCases.count)
 print(Palette.startColor)
 print(Palette.endColor)
 
