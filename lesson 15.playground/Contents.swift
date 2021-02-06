@@ -7,7 +7,7 @@ struct FileDescription {
     var fileName: String {
 /* реализую метод из функционала NSString, разделяющий строку на элементы по разделяющему символу '\' и все элементы внесу в массив, с последним элементом проделаю такую же операцию с разделяющим символом "." и переменной fileName присвою значение суммы элементов массива без последнего */
         let words = filePath.components(separatedBy: "\\")
-        let names = words[(words.count-1)].components(separatedBy: ".")
+        let names = words[(words.count - 1)].components(separatedBy: ".")
         var fileName = ""
         if words.count <= 2 {
             fileName = words[0]
@@ -26,7 +26,7 @@ struct FileDescription {
     var pathToTheFolder: String {
 /* использую массив из вычисляемого свойства fileName и преременной pathToTheFolder присвою значение суммы всех элементов кроме последнего разделяя элементы символом "/" */
         let words = filePath.components(separatedBy: "\\")
-        var pathToTheFolder = " "
+        var pathToTheFolder = ""
         for index in 0 ..< (words.count - 1) {
             pathToTheFolder = "\(pathToTheFolder)" + "\(words[index])" + "\\"
         }
@@ -40,34 +40,37 @@ struct FileDescription {
         return typeFile
     }
     
-    var content:String {
+    var content: String {
         var content = ""
         switch typeFile {
             case "txt":
                 content = "information/documentation"
             case "exe":
-                content = "executeble file"
+                content = "executable file"
             default:
                 content = "unknown file"
             }
         return content
     }
 }
-/* 2. созадать энум, представляющий цветовую гамму, каждое значение энума должно быть Int, тоесть каждое значение энума соответсвовало трехбайтному значению цвета создать энуму три свойства: колличество цветов в гамме, начальный цвет и конечный цвет. */
+/* 2. созадать энум, представляющий цветовую гамму, каждое значение энума должно быть Int, тоесть каждое значение энума соответсвовало трехбайтному значению цвета создать энуму три свойства: колличество цветов в гамме, начальный цвет и конечный цвет.
 
-enum Palette: Int {
-    //case color(R: Int, B: Int, G: Int)
-    case totalColor
-    case startColor
-    case endColor
+enum Palette {
+    //case color(R: Int, G: Int, B: Int)
+    case white(255.0, 255.0, 255.0)
+    case yellow(255.0, 204.0, 0.0)
+    case blue(0.0, 122.0, 255.0)
+    
+    
     
     func middleColor() -> Int {
         return self.rawValue * 100
     }
 }
 
+
 struct PaletteStructure {
-    //case color(R: Int, B: Int, G: Int)
+    //case color(R: Int, G: Int, B: Int)
     var totalColor: Int = 0
     var startColor: Int = 0
     var endColor: Int = 0
@@ -86,23 +89,23 @@ struct PaletteStructure {
 }
 
 let abcd = PaletteStructure.init(totalColor: 5)
-
+*/
 
 /* 3. создать класс Человек свойства имя фамилия возраст рост вес, макс вес-возраст, минимальный вес-возраст, макс длинна имени, макс длина фамилии   создать свойство в классе, которое будет содержать колличество созданных обьектов этого класса(вып) */
 class Human {
-    static let maxLenghFirstName = 7  // lenght
-    static let maxLenghSerName = 25 //surname
+    static let firstNameMaxLenght = 10  // lenght
+    static let surnameMaxLenght = 25 //surname
     var firstName: String {
         didSet {
-            if firstName.count > Human.maxLenghFirstName {
+            if firstName.count > Human.firstNameMaxLenght {
                 firstName = oldValue
             }
         }
     }
     
-    var serName: String {
+    var surname: String {
         didSet {
-            if firstName.count > Human.maxLenghFirstName {
+            if firstName.count > Human.firstNameMaxLenght {
             firstName = oldValue
             }
         }
@@ -131,26 +134,26 @@ class Human {
         }
     }
     
-    static var totalCopy = 0
+    static var copiesCount = 0
     
-    init(firstName: String, serName: String, age: Int, height: Int, weight: Int) {
+    init(firstName: String, surname: String, age: Int, height: Int, weight: Int) {
         self.firstName = firstName
-        self.serName = serName
+        self.surname = surname
         self.age = age
         self.height = height
         self.weight = weight
-        Human.totalCopy += 1
+        Human.copiesCount += 1
     }
 }
 
-var human1 = Human(firstName: "Vasya", serName: "Moysha", age: 32, height: 100, weight: 60)
-var human2 = Human(firstName: "Tom", serName: "Mur", age: 1000, height: 30, weight: 2)
+var human1 = Human(firstName: "Vasya", surname: "Moysha", age: 32, height: 100, weight: 60)
+var human2 = Human(firstName: "Tom", surname: "Mur", age: 1000, height: 30, weight: 2)
 print(human1.firstName)
-print(human1.serName)
+print(human1.surname)
 print(human1.age)
 print(human1.height)
 print(human1.weight)
-print(Human.totalCopy)
+print(Human.copiesCount)
 human1.height = 120
 print(human1.height)
 print(human1.firstName)
