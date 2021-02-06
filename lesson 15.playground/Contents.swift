@@ -53,43 +53,41 @@ struct FileDescription {
         return content
     }
 }
-/* 2. созадать энум, представляющий цветовую гамму, каждое значение энума должно быть Int, тоесть каждое значение энума соответсвовало трехбайтному значению цвета создать энуму три свойства: колличество цветов в гамме, начальный цвет и конечный цвет.
+/* 2. созадать энум, представляющий цветовую гамму, каждое значение энума должно быть Int, тоесть каждое значение энума соответсвовало трехбайтному значению цвета создать энуму три свойства: колличество цветов в гамме, начальный цвет и конечный цвет.*/
 
-enum Palette {
-    //case color(R: Int, G: Int, B: Int)
-    case white(255.0, 255.0, 255.0)
-    case yellow(255.0, 204.0, 0.0)
-    case blue(0.0, 122.0, 255.0)
+enum Palette: Int, CaseIterable {
+    case white = 0xffffff
+    case yellow = 0xffcc00
+    case blue = 0x007aff
+    case red = 0xff3b30
+    case black = 0x000000
     
+
+    static var colorsCount = {
+        Palette.allCases.count
+    }
     
+    static var startColor: Palette {
+        get {
+            return Palette.allCases.sorted {
+                $0.rawValue > $1.rawValue
+            }[0]
+        }
+    }
     
-    func middleColor() -> Int {
-        return self.rawValue * 100
+    static var endColor: Palette {
+        get {
+            return Palette.allCases.sorted {
+                $0.rawValue < $1.rawValue
+            }[0]
+        }
     }
 }
 
-
-struct PaletteStructure {
-    //case color(R: Int, G: Int, B: Int)
-    var totalColor: Int = 0
-    var startColor: Int = 0
-    var endColor: Int = 0
-    
-    init(totalColor: Int) {
-        self.totalColor = totalColor
-    }
-    
-    init(startColor: Int) {
-        self.startColor = startColor
-    }
-    
-    init(endColor: Int) {
-        self.endColor = endColor
-    }
-}
-
-let abcd = PaletteStructure.init(totalColor: 5)
-*/
+print(Palette.allCases)
+print(Palette.allCases.count)
+print(Palette.startColor)
+print(Palette.endColor)
 
 /* 3. создать класс Человек свойства имя фамилия возраст рост вес, макс вес-возраст, минимальный вес-возраст, макс длинна имени, макс длина фамилии   создать свойство в классе, которое будет содержать колличество созданных обьектов этого класса(вып) */
 class Human {
