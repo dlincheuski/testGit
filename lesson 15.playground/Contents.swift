@@ -13,7 +13,8 @@ struct FileDescription {
             fileName = words.first!
         } else {
             for index in 0 ..< (names.count - 1) {
-                fileName = index == (names.count - 2) ? "\(fileName)\(names[index])" : "\(fileName)\(names[index])."
+                let baseFileName = "\(fileName)\(names[index])"
+                fileName = (index == (names.count - 2)) ? baseFileName : baseFileName + "."
             }
         }
         return fileName
