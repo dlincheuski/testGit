@@ -17,7 +17,7 @@ class Artist {
     }
 }
 
-class Dancer : Artist {
+class Dancer: Artist {
     override func printPerformance() -> String {
         return super.printPerformance() + "dance perfornance"
     }
@@ -25,7 +25,7 @@ class Dancer : Artist {
 
 var dancer = Dancer(firstName: "Oleg", surname: "Vishnevsky")
 
-class Painter : Artist {
+class Painter: Artist {
     override var firstName: String {
         set {
             return
@@ -51,7 +51,7 @@ class Painter : Artist {
 
 var painter = Painter(firstName: "Pablo", surname: "Picassio")
 
-class Singer : Artist {
+class Singer: Artist {
     override func printPerformance() -> String {
         return super.printPerformance() + "singing perfornance"
     }
@@ -59,20 +59,18 @@ class Singer : Artist {
 
 var singer = Singer(firstName: "Dmitry", surname: "Babushkin")
 
-class Musican : Artist {
+class Musican: Artist {
     override func printPerformance() -> String {
         return super.printPerformance() + "musical perfornance"
     }
 }
 
 var musican = Musican(firstName: "Vladimir", surname: "Nimerovich")
-
 var allPerformances = [dancer, painter, singer, musican]
 
 for value in allPerformances {
     print(value.printPerformance())
 }
-
 /* 2. Создать базовый класс транстпортное средство и у него будет 3 свойства скорость вместимовсть и стоимость 1 перевозки
  создать несколько дочерних классов самолет корабль вертолет машина поезд и у каждого по 1 обьекту
  определить сколько уйдет денег и времени что бы перевезти 100 и 10000 человек каждым из транспортных средств*/
@@ -99,31 +97,27 @@ class Transport {
     
 }
 
-class Airbus : Transport {
-    
+class Airbus: Transport {
 }
 
 var airbus100 = Airbus(speed: 800, capasity: 105, oneTripCost: 100, numberOfPeople: 100)
 var airbuss10000 = Airbus(speed: 800, capasity: 100, oneTripCost: 100, numberOfPeople: 10000)
 
-class Helicopter : Transport {
-    
+class Helicopter: Transport {
 }
 
 var helicopter100 = Helicopter(speed: 250, capasity: 15, oneTripCost: 200, numberOfPeople: 100)
 var helicopter10000 = Helicopter(speed: 250, capasity: 15, oneTripCost: 200, numberOfPeople: 10000)
 
 
-class Train : Transport {
-    
+class Train: Transport {
 }
 
 var train100 = Train(speed: 75, capasity: 350, oneTripCost: 50, numberOfPeople: 100)
 var train10000 = Train(speed: 75, capasity: 350, oneTripCost: 50, numberOfPeople: 10000)
 
 
-class Car : Transport {
-    
+class Car: Transport {
 }
 
 var car100 = Car(speed: 120, capasity: 6, oneTripCost: 75, numberOfPeople: 100)
@@ -142,11 +136,7 @@ for value in dataBases {
  /*3. Дано 5 классов люди обезьяны собаки жирафы крокодилы
  Создать родительский класс который группирает все пять классов. Создать по 2 экземпляра каждого класса
  Посчитать всех пресмыкающихся(создать массив,где размещаются только пресмыкающиеся), сколько четвероногих+, сколько животных, сколько живых существ*/
-class Animal {
-    
-}
-
-class Human : Animal {
+class Human {
     var animal = true
     var alive = true
     var leg = 2
@@ -163,7 +153,7 @@ class Human : Animal {
 var human1 = Human(animal: true, alive: true, leg: 2, reptiles: false)
 var human2 = Human(animal: true, alive: true, leg: 2, reptiles: false)
 
-class Monkey : Animal {
+class Monkey {
     var animal = true
     var alive = true
     var leg = 2
@@ -180,7 +170,7 @@ class Monkey : Animal {
 var monkey1 = Monkey(animal: true, alive: true, leg: 4, reptiles: false)
 var monkey2 = Monkey(animal: true, alive: true, leg: 4, reptiles: false)
 
-class Dog : Animal {
+class Dog {
     var animal = true
     var alive = true
     var leg = 2
@@ -197,7 +187,7 @@ class Dog : Animal {
 var dog1 = Dog(animal: true, alive: true, leg: 4, reptiles: false)
 var dog2 = Dog(animal: true, alive: false, leg: 4, reptiles: false)
 
-class Giraffe : Animal {
+class Giraffe {
     var animal = true
     var alive = true
     var leg = 2
@@ -214,7 +204,7 @@ class Giraffe : Animal {
 var giraffe1 = Giraffe(animal: true, alive: true, leg: 4, reptiles: false)
 var giraffe2 = Giraffe(animal: true, alive: true, leg: 4, reptiles: false)
 
-class Crocodile : Animal{
+class Crocodile {
     var animal = true
     var alive = true
     var leg = 2
@@ -231,32 +221,92 @@ class Crocodile : Animal{
 var crocodile1 = Crocodile(animal: true, alive: true, leg: 4, reptiles: true)
 var crocodile2 = Crocodile(animal: true, alive: true, leg: 4, reptiles: true)
 
-var animals = [human1, human2, monkey1, monkey2, dog1, dog2, giraffe1, giraffe2, crocodile1, crocodile2]
+var animals = [AnyObject]()
+animals = [human1, human2, monkey1, monkey2, dog1, dog2, giraffe1, giraffe2, crocodile1, crocodile2]
 
-animals[0]
+var selectAnimal = [AnyObject]()
+var selectAlive = [AnyObject]()
+var selectLeg = [AnyObject]()
+var selectReptiles = [AnyObject]()
 
-var selectAnimal = 0
-var selectAlive = 0
-var selectLeg = 0
-var selectReptiles = 0
+for animal in animals {
+    if let value = animal as? Human {
+        if value.animal {
+            selectAnimal.append(animal)
+        }
+        if value.alive {
+            selectAlive.append(animal)
+        }
+        if value.leg == 4 {
+            selectLeg.append(animal)
+        }
+        if value.reptiles {
+            selectReptiles.append(animal)
+        }
+    }
     
-for value in animals {
-    switch value {
-    case .animal:
-        selectAnimal += 1
-        continue
-    case .alive:
-        selectAlive += 1
-        continue
-    case .leg:
-        selectLeg += 1
-        continue
-    case .reptiles:
-        selectReptiles += 1
-        continue
-        default:
-            <#code#>
+    if let value = animal as? Dog {
+        if value.animal {
+            selectAnimal.append(animal)
+        }
+        if value.alive {
+            selectAlive.append(animal)
+        }
+        if value.leg == 4 {
+            selectLeg.append(animal)
+        }
+        if value.reptiles {
+            selectReptiles.append(animal)
+        }
+    }
+    
+    if let value = animal as? Monkey {
+        if value.animal {
+            selectAnimal.append(animal)
+        }
+        if value.alive {
+            selectAlive.append(animal)
+        }
+        if value.leg == 4 {
+            selectLeg.append(animal)
+        }
+        if value.reptiles {
+            selectReptiles.append(animal)
+        }
+    }
+    
+    if let value = animal as? Giraffe {
+        if value.animal {
+            selectAnimal.append(animal)
+        }
+        if value.alive {
+            selectAlive.append(animal)
+        }
+        if value.leg == 4 {
+            selectLeg.append(animal)
+        }
+        if value.reptiles {
+            selectReptiles.append(animal)
+        }
+    }
+    
+    if let value = animal as? Crocodile {
+        if value.animal {
+            selectAnimal.append(animal)
+        }
+        if value.alive {
+            selectAlive.append(animal)
+        }
+        if value.leg == 4 {
+            selectLeg.append(animal)
+        }
+        if value.reptiles {
+            selectReptiles.append(animal)
+        }
     }
 }
 
-print("Среди представленных элементов можно отнести: к животным \(selectAnimal), к живым \(selectAlive), к четвероногим \(selectLeg), к рептилиям \(selectReptiles)")
+print("Всего животных \(selectAnimal.count)")
+print("Всего живущих \(selectAlive.count)")
+print("Всего четвероногих \(selectLeg.count)")
+print("Всего рептилий \(selectReptiles.count)")
