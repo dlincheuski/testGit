@@ -36,13 +36,18 @@ class Family {
 class Dad {
     var name: String
     
+    var mom: Mom?
+    var kids: [Kid]
+    
     var firstDaddyClosure : (()->())?
     var secondDaddyClosure : (()->())?
     var thirdDaddyClosure : (()->())?
     
-    init(name: String) {
+    init(name: String, mom: Mom? = nil, kids: [Kid] = [Kid]()) {
         print("Dad enter the room")
         self.name = name
+        self.mom = mom
+        self.kids = kids
     }
     
     deinit {
@@ -52,10 +57,14 @@ class Dad {
 
 class Mom {
     var name: String
+    var dad: Dad?
+    var kids: [Kid]
     
-    init(name: String) {
+    init(name: String, dad: Dad? = nil, kids: [Kid] = [Kid]()) {
         print("Mom enter the room")
         self.name = name
+        self.dad = dad
+        self.kids = kids
     }
     
     deinit {
