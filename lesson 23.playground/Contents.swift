@@ -23,7 +23,7 @@ class Human {
     var pet: Animal.Pets
     
     class Animal {
-        enum Pets: String {
+        enum Pet: String {
             case dog = "Gav Gav"
             case cat = "Myaffff"
             case caw = "Muuuuu"
