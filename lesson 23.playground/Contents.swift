@@ -30,7 +30,7 @@ class Human {
             case noPet = "I like Giraffe"
         }
         
-        func pet(pet: Pets) -> (String){
+        func descriptionPetVoice(pet: Pets) ->String {
                 switch pet {
                 case .dog:
                     return Pets.dog.rawValue
@@ -43,9 +43,7 @@ class Human {
                 }
         }
     }
-    
 
-    
     init(name: String, dad: Human? = nil, mom: Human? = nil, brothers: [Human] = [], sisters: [Human] = [], pet: Animal.Pets = .noPet) {
         self.name = name
         self.dad = dad
@@ -57,12 +55,13 @@ class Human {
 }
 
 class Man: Human {
-    func moveForMan() {
+    func move() {
         print("I go move sofa")
     }
 }
+
 class Woman: Human {
-    func moveForWoman() {
+    func move() {
         print("I go to cook dinner")
     }
 }
@@ -137,22 +136,22 @@ humanValya.pet = .dog
 
 var socialNetwork = [humanMisha, humanMasha, humanSasha, humanKolya, humanLiza, humanDima, humanVera, humanVova, humanPetr, humanSlava, humanLena, humanOleg, humanMira, humanMila, humanValya]
 
-func cousinsCount(human: Human) -> (Int) {
+func cousinsCount(human: Human) ->Int {
     var cousins = 0
+    
     for brother in socialNetwork {
-        guard let brothers = brother.dad?.brothers else {continue}
-        guard let dadName = human.dad?.name else {continue}
-        for value in 0 ..< brothers.count {
-            if brothers[value].name == dadName {
+        guard let brothers = brother.dad?.brothers, let dadName = human.dad?.name else {continue}
+        for brother in 0 ..< brothers.count {
+            if brothers[brother].name == dadName {
                 cousins += 1
             }
         }
     }
+    
     for sister in socialNetwork {
-        guard let sisters = sister.mom?.sisters else {continue}
-        guard let momName = human.mom?.name else {continue}
-        for value in 0 ..< sisters.count {
-            if sisters[value].name == momName {
+        guard let sisters = sister.mom?.sisters, let momName = human.mom?.name else {continue}
+        for sister in 0 ..< sisters.count {
+            if sisters[sister].name == momName {
                 cousins += 1
             }
         }
@@ -162,34 +161,35 @@ func cousinsCount(human: Human) -> (Int) {
     
 print("У \(humanMisha.name) \(cousinsCount(human: humanMisha)) двоюродных братьев и систер")
 
-let humanA = Man(name: "A")
-let humanB = Man(name: "B")
-let humanC = Man(name: "C")
-let humanAA = Woman(name: "A")
-let humanBB = Woman(name: "B")
-let humanCC = Woman(name: "C")
+let manAndrew = Man(name: "A")
+let manBoris = Man(name: "B")
+let manChang = Man(name: "C")
+let womenAngela = Woman(name: "A")
+let womenBarbara = Woman(name: "B")
+let womenChristina = Woman(name: "C")
 
-var taskTwoHumans = [humanA,  humanAA, humanB,  humanBB, humanC, humanCC]
+var taskTwoHumans = [manAndrew, manBoris, manChang, womenAngela, womenBarbara, womenChristina]
 var manCount = 0
 var womanCount = 0
 for human in taskTwoHumans {
-    if let value = human as? Man {
-        value.moveForMan()
+    if let man = human as? Man {
+        man.move()
         manCount += 1
     }
-    if let value = human as? Woman {
-        value.moveForWoman()
+    if let women = human as? Woman {
+        women.move()
         womanCount += 1
     }
 }
 
 print("В представленном массиве мужчин - \(manCount), женщин - \(womanCount)")
 
-func humanWithPets(humans: [Human]) -> (String) {
+func humanPetInfo(humans: [Human]) ->String {
     var dogPerson = 0
     var catPerson = 0
     var cawPerson = 0
     var humanNoPet = 0
+    
     for petLover in humans {
         switch petLover.pet {
             case .dog:
@@ -205,9 +205,7 @@ func humanWithPets(humans: [Human]) -> (String) {
                 humanNoPet += 1
         }
     }
-return "В нашей социальной сети: собачничков: \(dogPerson), кошатников: \(catPerson), любителей коров: \(cawPerson)"
+    return "В нашей социальной сети: собачничков: \(dogPerson), кошатников: \(catPerson), любителей коров: \(cawPerson)"
 }
 
-
-print(humanWithPets(humans: socialNetwork))
-
+print(humanPetInfo(humans: socialNetwork))
