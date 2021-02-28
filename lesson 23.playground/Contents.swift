@@ -20,7 +20,7 @@ class Human {
     var mom: Human?
     var brothers: [Human]
     var sisters: [Human]
-    var pet: Animal.Pets
+    var pet: Animal.Pet
     
     class Animal {
         enum Pet: String {
@@ -30,21 +30,21 @@ class Human {
             case noPet = "I like Giraffe"
         }
         
-        func descriptionPetVoice(pet: Pets) ->String {
+        func descriptionPetVoice(pet: Pet) ->String {
                 switch pet {
                 case .dog:
-                    return Pets.dog.rawValue
+                    return Pet.dog.rawValue
                 case .cat:
-                    return Pets.cat.rawValue
+                    return Pet.cat.rawValue
                 case .caw:
-                    return Pets.caw.rawValue
+                    return Pet.caw.rawValue
                 case .noPet:
-                    return Pets.noPet.rawValue
+                    return Pet.noPet.rawValue
                 }
         }
     }
 
-    init(name: String, dad: Human? = nil, mom: Human? = nil, brothers: [Human] = [], sisters: [Human] = [], pet: Animal.Pets = .noPet) {
+    init(name: String, dad: Human? = nil, mom: Human? = nil, brothers: [Human] = [], sisters: [Human] = [], pet: Animal.Pet = .noPet) {
         self.name = name
         self.dad = dad
         self.mom = mom
