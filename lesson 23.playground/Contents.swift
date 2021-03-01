@@ -3,7 +3,7 @@
  создать 20 экземпляров класса, создать для одного из них папу и маму
  Папе и маме тоже поставить братьев сестер пап мам(все проперти опциональны-могут быть могут отсутствовать)
  Посчитать для главного героя количество двоюродных братьев, дядь и теть используя опциональные цепочки
- 2. Создать класс мущина и женщина , унаследованные от класса Человек.
+ 2. Создать класс мужчина и женщина , унаследованные от класса Человек.
  У всех мужчин сделать метод Двигать диван, у женщин Готовить еду.
  Создать массив со всеми экземплярами класса. Посчитать сколько среди людей мужчин, женщин, и для
  каждого вызвать его метод.
@@ -20,31 +20,31 @@ class Human {
     var mom: Human?
     var brothers: [Human]
     var sisters: [Human]
-    var pet: Animal.Pet
+    var pet: Human.PetType
+    
+    enum PetType: String {
+        case dog = "Gav Gav"
+        case cat = "Myaffff"
+        case caw = "Muuuuu"
+        case noPet = "I like Giraffe"
+    }
     
     class Animal {
-        enum Pet: String {
-            case dog = "Gav Gav"
-            case cat = "Myaffff"
-            case caw = "Muuuuu"
-            case noPet = "I like Giraffe"
-        }
-        
-        func descriptionPetVoice(pet: Pet) ->String {
+        func descriptionPetVoice(pet: Human.PetType) -> String {
                 switch pet {
-                case .dog:
-                    return Pet.dog.rawValue
-                case .cat:
-                    return Pet.cat.rawValue
-                case .caw:
-                    return Pet.caw.rawValue
-                case .noPet:
-                    return Pet.noPet.rawValue
+                    case .dog:
+                        return PetType.dog.rawValue
+                    case .cat:
+                        return PetType.cat.rawValue
+                    case .caw:
+                        return PetType.caw.rawValue
+                    case .noPet:
+                        return PetType.noPet.rawValue
                 }
         }
     }
 
-    init(name: String, dad: Human? = nil, mom: Human? = nil, brothers: [Human] = [], sisters: [Human] = [], pet: Animal.Pet = .noPet) {
+    init(name: String, dad: Human? = nil, mom: Human? = nil, brothers: [Human] = [], sisters: [Human] = [], pet: Human.PetType = .noPet) {
         self.name = name
         self.dad = dad
         self.mom = mom
@@ -136,11 +136,11 @@ humanValya.pet = .dog
 
 var socialNetwork = [humanMisha, humanMasha, humanSasha, humanKolya, humanLiza, humanDima, humanVera, humanVova, humanPetr, humanSlava, humanLena, humanOleg, humanMira, humanMila, humanValya]
 
-func cousinsCount(human: Human) ->Int {
+func cousinsCount(human: Human) -> Int {
     var cousins = 0
     
     for brother in socialNetwork {
-        guard let brothers = brother.dad?.brothers, let dadName = human.dad?.name else {continue}
+        guard let brothers = brother.dad?.brothers, let dadName = human.dad?.name else { continue }
         for brother in 0 ..< brothers.count {
             if brothers[brother].name == dadName {
                 cousins += 1
@@ -149,7 +149,7 @@ func cousinsCount(human: Human) ->Int {
     }
     
     for sister in socialNetwork {
-        guard let sisters = sister.mom?.sisters, let momName = human.mom?.name else {continue}
+        guard let sisters = sister.mom?.sisters, let momName = human.mom?.name else { continue }
         for sister in 0 ..< sisters.count {
             if sisters[sister].name == momName {
                 cousins += 1
@@ -184,7 +184,7 @@ for human in taskTwoHumans {
 
 print("В представленном массиве мужчин - \(manCount), женщин - \(womanCount)")
 
-func humanPetInfo(humans: [Human]) ->String {
+func humanPetInfo(humans: [Human]) -> String {
     var dogPerson = 0
     var catPerson = 0
     var cawPerson = 0
