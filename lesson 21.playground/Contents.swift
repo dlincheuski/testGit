@@ -114,16 +114,19 @@ if areaOfVisibility {
         [weak mom, weak kid1, weak kid2, weak dad] in
         print("\(mom?.name) \(kid1?.name) \(kid2?.name) and \(dad?.name) - its all our family")
     }
+    
     dad.firstDaddyClosure!()
     dad.secondDaddyClosure = {
         [weak mom] in
         print("\(mom?.name) is our most beautiful Mom in the World")
     }
+    
     dad.secondDaddyClosure!()
     dad.thirdDaddyClosure = {
         [weak kid1, weak kid2] in
         print("Its my son \(kid2?.name) and doughter \(kid1?.name)")
     }
+    
     dad.thirdDaddyClosure!()
     print("End area of Visibility")
 }
