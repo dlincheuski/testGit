@@ -72,7 +72,6 @@ extension String {
             let end = self.index(self.startIndex, offsetBy: value)
             let range = start..<end
             return String(self[range]) + "..."
-
         }
         
         if value >= self.count {
