@@ -13,6 +13,14 @@
  4. Все животные унаследованы от класса животные, в котором есть метод издать звук.
  При прохождении по массиву животных каждое из них должно издавать свой крик
  */
+/*
+Замечания:
+ 1. Расширения добавляют новую функциональность существующему типу класса, структуры или перечисления.
+ 2. Для облехчения ввода данных в инициализаторе лучше присваивать значения по умолчанию.
+ 3. В playgraund сначала сверху вниз идут: переменные, перечисления, родительские классы, дочерние классы, инициализаторы.
+ 4. Экземпляр должен полность быть инициализирован до того, как вносить изменения.
+ 
+ */
 
 class Human {
     var name: String
@@ -20,37 +28,52 @@ class Human {
     var mom: Human?
     var brothers: [Human]
     var sisters: [Human]
-    var pet: Human.PetType
-    
-    enum PetType: String {
-        case dog = "Gav Gav"
-        case cat = "Myaffff"
-        case caw = "Muuuuu"
-        case noPet = "I like Giraffe"
-    }
-    
-    class Animal {
-        func descriptionPetVoice(pet: Human.PetType) -> String {
-                switch pet {
-                    case .dog:
-                        return PetType.dog.rawValue
-                    case .cat:
-                        return PetType.cat.rawValue
-                    case .caw:
-                        return PetType.caw.rawValue
-                    case .noPet:
-                        return PetType.noPet.rawValue
-                }
-        }
-    }
+    var pet: Pet?
 
-    init(name: String, dad: Human? = nil, mom: Human? = nil, brothers: [Human] = [], sisters: [Human] = [], pet: Human.PetType = .noPet) {
+    init(name: String, dad: Human? = nil, mom: Human? = nil, brothers: [Human] = [], sisters: [Human] = [], pet: Pet? = nil) {
         self.name = name
         self.dad = dad
         self.mom = mom
         self.brothers = brothers
         self.sisters = sisters
         self.pet = pet
+    }
+}
+
+enum PetType: String {
+    case dog = "Gav Gav"
+    case cat = "Myaffff"
+    case caw = "Muuuuu"
+}
+
+enum WildType: String {
+    case lion = "Rrrrrr"
+    case elephant = "Uuuuuuiiiiii"
+}
+
+class Animal {
+    func voice() -> String {
+        return ""
+    }
+}
+
+class WildAnimal: Animal {
+    var type: WildType = .lion
+    
+    override func voice() -> String {
+        return type.rawValue
+    }
+}
+
+class Pet: Animal {
+    var type: PetType = .cat
+    
+    override func voice() -> String {
+        return type.rawValue
+    }
+    
+    init(_ type: PetType) {
+        self.type = type
     }
 }
 
@@ -86,7 +109,7 @@ humanMisha.dad = humanKolya
 humanMisha.mom = humanLiza
 humanMisha.brothers = [humanSasha]
 humanMisha.sisters = [humanMasha]
-humanMisha.pet = .dog
+humanMisha.pet = Pet(.dog)
 
 humanMasha.dad = humanKolya
 humanMasha.mom = humanLiza
@@ -96,7 +119,7 @@ humanSasha.dad = humanKolya
 humanSasha.mom = humanLiza
 humanSasha.brothers = [humanMisha]
 humanSasha.sisters = [humanMasha]
-humanSasha.pet = .cat
+humanSasha.pet = Pet(.cat)
 
 humanKolya.dad = humanDima
 humanKolya.mom = humanVera
@@ -105,9 +128,9 @@ humanKolya.brothers = [humanVova]
 humanLiza.dad = humanOleg
 humanLiza.mom = humanMira
 humanLiza.sisters = [humanLena]
-humanLiza.pet = .caw
+humanLiza.pet = Pet(.caw)
 
-humanVera.pet = .dog
+humanVera.pet = Pet(.dog)
 
 humanVova.dad = humanDima
 humanVova.mom = humanVera
@@ -115,7 +138,7 @@ humanVova.brothers = [humanKolya]
 
 humanPetr.dad = humanVova
 humanPetr.brothers = [humanSlava]
-humanPetr.pet = .cat
+humanPetr.pet = Pet(.cat)
 
 humanSlava.dad = humanVova
 humanSlava.brothers = [humanPetr]
@@ -123,16 +146,16 @@ humanSlava.brothers = [humanPetr]
 humanLena.dad = humanOleg
 humanLena.mom = humanMira
 humanLena.sisters = [humanLiza]
-humanLena.pet = .caw
+humanLena.pet = Pet(.dog)
 
-humanMira.pet = .dog
+humanMira.pet = Pet(.cat)
 
 humanMila.mom = humanLena
 humanMila.sisters = [humanValya]
 
 humanValya.mom = humanLena
 humanValya.sisters = [humanMila]
-humanValya.pet = .dog
+humanValya.pet = Pet(.dog)
 
 var socialNetwork = [humanMisha, humanMasha, humanSasha, humanKolya, humanLiza, humanDima, humanVera, humanVova, humanPetr, humanSlava, humanLena, humanOleg, humanMira, humanMila, humanValya]
 
@@ -176,6 +199,7 @@ for human in taskTwoHumans {
         man.move()
         manCount += 1
     }
+    
     if let women = human as? Woman {
         women.move()
         womanCount += 1
@@ -188,21 +212,17 @@ func humanPetInfo(humans: [Human]) -> String {
     var dogPerson = 0
     var catPerson = 0
     var cawPerson = 0
-    var humanNoPet = 0
     
-    for petLover in humans {
-        switch petLover.pet {
+    for petLover in socialNetwork {
+        guard let petType = petLover.pet?.type else { continue }
+        print("Домашнее животное \(petLover.name) делает \(petLover.pet!.voice())")
+        switch petType {
             case .dog:
                 dogPerson += 1
-                print(petLover.pet.rawValue)
             case .cat:
                 catPerson += 1
-                print(petLover.pet.rawValue)
             case .caw:
                 cawPerson += 1
-                print(petLover.pet.rawValue)
-            default:
-                humanNoPet += 1
         }
     }
     return "В нашей социальной сети: собачничков: \(dogPerson), кошатников: \(catPerson), любителей коров: \(cawPerson)"
