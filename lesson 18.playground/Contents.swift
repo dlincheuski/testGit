@@ -19,7 +19,7 @@ class Artist {
 
 class Dancer: Artist {
     override func performanceInfo() -> String {
-        return super.performanceInfo() + "dance perfornance"
+        return super.performanceInfo() + "dance performance"
     }
 }
 
@@ -45,7 +45,7 @@ class Painter: Artist {
     }
     
     override func performanceInfo() -> String {
-        return super.performanceInfo() + "paintic perfornance"
+        return super.performanceInfo() + "paintic perfornmance"
     }
 }
 
@@ -53,7 +53,7 @@ var painter = Painter(firstName: "Pablo", surname: "Picassio")
 
 class Singer: Artist {
     override func performanceInfo() -> String {
-        return super.performanceInfo() + "singing perfornance"
+        return super.performanceInfo() + "singing perfornamce"
     }
 }
 
@@ -61,7 +61,7 @@ var singer = Singer(firstName: "Dmitry", surname: "Babushkin")
 
 class Musician: Artist {
     override func performanceInfo() -> String {
-        return super.performanceInfo() + "musical perfornance"
+        return super.performanceInfo() + "musical performance"
     }
 }
 
@@ -71,9 +71,11 @@ var artists = [dancer, painter, singer, musician]
 for artist in artists {
     print(artist.performanceInfo())
 }
+
 /* 2. Создать базовый класс транстпортное средство и у него будет 3 свойства скорость вместимовсть и стоимость 1 перевозки
  создать несколько дочерних классов самолет корабль вертолет машина поезд и у каждого по 1 обьекту
  определить сколько уйдет денег и времени что бы перевезти 100 и 10000 человек каждым из транспортных средств*/
+
 class Transport {
     var speed: Int
     var capacity: Int
@@ -132,6 +134,7 @@ for transport in transports {
  /*3. Дано 5 классов люди обезьяны собаки жирафы крокодилы
  Создать родительский класс который группирает все пять классов. Создать по 2 экземпляра каждого класса
  Посчитать всех пресмыкающихся(создать массив,где размещаются только пресмыкающиеся), сколько четвероногих+, сколько животных, сколько живых существ*/
+
 class Human {
     var animal = true
     var alive = true
