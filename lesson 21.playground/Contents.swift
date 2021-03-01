@@ -39,9 +39,9 @@ class Dad {
     var mom: Mom?
     var kids: [Kid]
     
-    var firstDaddyClosure : (()->())?
-    var secondDaddyClosure : (()->())?
-    var thirdDaddyClosure : (()->())?
+    var firstDaddyClosure: (()->())?
+    var secondDaddyClosure: (()->())?
+    var thirdDaddyClosure: (()->())?
     
     init(name: String, mom: Mom? = nil, kids: [Kid] = [Kid]()) {
         print("Dad enter the room")
