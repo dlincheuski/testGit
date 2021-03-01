@@ -9,19 +9,19 @@
 import Foundation
 
 extension Int {
-    var  isNegative: Bool {
-        return (self < 0) ? true : false
+    var isNegative: Bool {
+        return self < 0
     }
     
     var isPositive: Bool {
-        return (self > 0) ? true : false
+        return self > 0
     }
     
     var isNotZero: Bool {
-        return self == 0 ? false : true
+        return self != 0
     }
     
-    var howManySymbolInNumbers: Int {
+    var symbolCount: Int {
         get {
             var count = 1
             var value = self
@@ -85,7 +85,7 @@ extension String {
 12345.isNegative
 12345.isPositive
 12345.isNotZero
-12345.howManySymbolInNumbers
+12345.symbolCount
 12345[0]
 var string = "Hello, World"
 string[0..<5]
