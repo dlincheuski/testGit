@@ -7,6 +7,8 @@
  5. Придумать оператор, который принимает String, и если элементы найдены в исходной строке то !lowerCase
  */
 //1. Перегрузить операторы -, /, -=, /=, *, *=, --i, i-- для точки
+import Foundation
+
 struct Point {
     var x = 0
     var y = 0
@@ -100,6 +102,7 @@ print(point1 -= point2)     // point1 = Point(x: 3, y: 1)
 
 //2. Создать структуру размер с свойствами ширина и длина.
 //создать структуру прямоугольник который имеет структуру Стартовая точка и структуру Размер
+// 3. Перегрузить операторы вычитания и сложения для прямоугольников
 
 struct Size {
     var height: Int = 0
@@ -152,4 +155,27 @@ if (rectangle1.point.x < rectangle2.point.x) && (rectangle2.point.x < (rectangle
     }
 }
 
+/* 4. Перегрузить оператор += для  String += Int */
 
+func +=(str: String, integer: Int) -> String {
+      let string = str + String(integer)
+      return string
+}
+
+var str1 = "Hello, "
+var str2 = 123
+str1 += str2
+
+//5. Придумать оператор, который принимает String, и если элементы найдены в исходной строке то !lowerCase
+
+infix operator ***: MultiplicationPrecedence
+
+func ***(str1: String, str2: String) -> String {
+    let resultString = str1.components(separatedBy: str2)
+    return resultString.joined(separator: str2.uppercased())
+}
+
+var string: String = "Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!"
+let testString = "o"
+
+var sr = string *** testString
