@@ -178,4 +178,4 @@ func ***(str1: String, str2: String) -> String {
 var string: String = "Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!"
 let testString = "o"
 
-var sr = string *** testString
+var str = string *** testString
